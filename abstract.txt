@@ -1,0 +1,60 @@
+//Abstract class
+    //Abatsrct class can not be instatiated.
+    //Abstract class can have data members; and regular, abstract and virtual functions.
+    //Abstract and Virtual functions must be declared as public.
+    //Abstract function should not have implementation where as virtual should have implementation.
+    //Abstarct class can import the base class members as 'virtual' so that downward stream of classes can reimplement them.
+    //Example: If Abstract class is inheriting from a interface class, interface-functions can be declared as virtual.
+    //By declaring as virtual, it gives down stream of classes a chance to reimplement that function.
+    interface overrideVirtualTest2
+    {
+        void Method1a();
+        void Method1b();
+    }
+
+    abstract class overrideAbstractTest : overrideVirtualTest2
+    {
+        public abstract void Method1();
+
+        public virtual void Method2()
+        {
+
+        }
+
+        //overrideVirtualTest2 methods
+        public void Method1a() //Import as non-virtual
+        {
+
+        }
+
+        public virtual void Method1b() //Import as virtual
+        {
+
+        }
+    }
+
+    class overrideAbstractTestD : overrideAbstractTest
+    {
+
+        /* Methods of overrideAbstractTest */
+        //public  void Method1() //ERROR
+        public override void Method1() 
+        {
+
+        }
+        public override void Method2()
+        {
+
+        }
+
+        /* Methods of overrideVirtualTest2 */
+        /*public override void Method1a() This can not be implemented because it is virtual
+        {
+
+        }*/
+
+        public override void Method1b() //downward stream-class can re-implement 
+        {
+
+        }
+    }

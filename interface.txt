@@ -1,0 +1,29 @@
+//Interface class
+    //interface class will not have data members and the methods will not have body also.
+    //Compiler will make every member public by default, so no need to add public. 
+    //Derived class must implement interface-functions, but they should not use OVERRIDE keyword.
+    //Derived class can be regular class or abstract class.
+    //Derived class can import the interface-class as 'virtual' 
+
+    //Interface class
+    interface overrideVirtualTest
+    {
+        void Method1();
+    }
+
+    class overrideVirtualTestD : overrideVirtualTest
+    {
+        //public override void Method1() ERROR 
+        public  void Method1() //No error In this case override is not required because 
+        {
+
+        }
+    }
+
+    abstract class overrideVirtualTestD2 : overrideVirtualTest
+    {
+        public virtual void Method1() //Import as virtual
+        {
+
+        }
+    }

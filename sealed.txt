@@ -1,0 +1,69 @@
+//sealed 
+    //sealed  modifier is used for preventing derived class altering the implementation. 
+    //This can be done at either class level or function level.
+    //Sealed-class: class declared as sealed can not be used as base class at all. 
+    //abstract-class and interface class can not be marked as sealed
+    
+    sealed class sealedClassTest //no one can derive from this class
+    {
+        int a;
+    }
+
+    //Sealed-function: Functions declared as abstract and virtual can be modified by all of the derived classes.
+    //We can restrict this ability(of reimplementing) to only few levels of derived classes, by using the keyword sealed.
+    //The last level to implement the function should use "sealed + override". From that point onwards, 
+    //function will not be available for overRIDING.
+    //Note that base class can stop every derived class from modifying by not using  virtual or abstract.
+    abstract class sealedTest
+    {
+        public abstract void Method4();
+
+        public virtual void Method5()
+        {
+
+        }
+
+        public abstract void Method7();
+
+        public virtual void Method8()
+        {
+
+        }
+
+    }
+
+    class sealedTestD : sealedTest
+    {
+        public override sealed void Method4() 
+        {
+            //downward derived class can not modify this function
+        }
+
+        public override sealed void Method5() 
+        {
+            //downward derived class can not modify this function
+        }
+
+        public override void Method7()
+        {
+            //downward derived class can modify this function
+        }
+
+        public override void Method8()
+        {
+            //downward derived class can modify this function
+        }
+    }
+
+    class sealedTestD1 : sealedTestD
+    {
+        public override void Method7()
+        {
+
+        }
+
+        public override sealed void Method8()
+        {
+
+        }
+    }
